@@ -9,3 +9,22 @@ Customer Portal for Farsound Aviation Limited (FAL) than runs server-side inside
 
 ![image](https://github.com/user-attachments/assets/789440c6-8438-49cb-ba8f-b044a581ca29)
 
+
+## Perequisites & Learning Resources
+ASP.NET Core
+
+C#
+
+Razor
+
+Blazor Server
+
+SignalR
+
+xUnit/MSTest/Nunit (Unit tests) 
+
+## Use Case Diagram for FARSOUND Customer Portal
+
+![image](https://github.com/user-attachments/assets/052869a0-006d-47d8-b02e-be9ef4d976a6)
+
+
