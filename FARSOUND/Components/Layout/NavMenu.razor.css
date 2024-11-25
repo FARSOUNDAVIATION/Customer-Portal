@@ -12,12 +12,12 @@
 }
 
     .navbar-toggler:checked {
-        background-color: #FF4D00;
+        background-color: #F28C00;
     }
 
 .top-row {
     height: 3.5rem;
-    background-color: #FF4D00;
+    background-color: #F28C00;
 }
 
 .navbar-brand {
@@ -72,12 +72,12 @@
     }
 
     .nav-item ::deep a.active {
-        background-color: #FF4D00;
+        background-color: #F28C00;
         color: white;
     }
 
     .nav-item ::deep .nav-link:hover {
-        background-color: #FF4D00;
+        background-color: #F28C00;
         color: white;
     }
 
