@@ -1,0 +1,70 @@
+﻿@page "/register"
+
+<div style="text-align: center;">
+    <h3>User Area</h3>
+    <h2>Sign Up</h2>
+</div>
+
+<EditForm Model="@user" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div style="text-align: center;">
+    <h5>Name</h5>
+    <div>
+        <label for="username">Username*</label>
+        <InputText id="username" @bind-Value="user.Username" />
+    </div>
+    <br />
+    <div>
+        <label for="email">E-mail*</label>
+        <InputText id="email" @bind-Value="user.Email" />
+    </div>
+    <br />
+    <h5>Account Security</h5>
+    <div>
+        <label for="password">Password*</label>
+        <InputText id="password" @bind-Value="user.Password" type="password" />
+    </div>
+    <br />
+    <div>
+        <label for="repeatPassword">Repeat Password*</label>
+        <InputText id="repeatPassword" @bind-Value="user.repeatPassword" type="password" />
+    </div>
+    <br />
+    <div>
+        <label for="securityQuestion">Security Question*</label>
+        <InputText id="securityQuestion" @bind-Value="user.securityQuestion" />
+    </div>
+    <br />
+    <div>
+        <label for="securityAnswer">Security Answer*</label>
+        <InputText id="securityAnswer" @bind-Value="user.securityAnswer" />
+    </div>
+    <br />
+    <button type="submit" style="background-color: #FF4D00;">Create User</button>
+    <br />
+    <br />
+    <a href="login">Already have an account? Login here.</a>
+    <br />
+    <a href="forgotpassword">Forgot your password?</a>
+    </div>
+</EditForm>
+
+@code {
+    private UserModel user = new UserModel();
+
+    private void HandleValidSubmit()
+    {
+        // Handle the registration logic here
+    }
+
+    public class UserModel
+    {
+        public string Username { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public string repeatPassword { get; set; }
+        public string securityQuestion { get; set; }
+        public string securityAnswer { get; set; }
+    }
+}

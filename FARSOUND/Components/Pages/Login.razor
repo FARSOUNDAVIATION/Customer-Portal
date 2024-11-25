@@ -1,0 +1,50 @@
+﻿@page "/login"
+
+<div style="text-align: center;">
+    <h3>User Area</h3>
+    <h2>Log In</h2>
+</div>
+
+<EditForm Model="@user" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div style="text-align: center;">
+    <div>
+        <label for="username">Username</label>
+        <InputText id="username" @bind-Value="user.Username" />
+    </div>
+    <br />
+    <div>
+        <label for="password">Password</label>
+        <InputText id="password" @bind-Value="user.Password" type="password" />
+    </div>
+    <br />
+    <div>
+        <InputCheckbox id="rememberMe" @bind-Value="user.RememberMe" />
+        <label for="rememberMe">Remember Me</label>
+    </div>
+    <br />
+    <button type="submit" style="background-color: #FF4D00;">Log In</button>
+    <br />
+    <br />
+    <a href="register">Don't have an account? Register here.</a>
+    <br />
+    <a href="forgotpassword">Forgot your password?</a>
+    </div>
+</EditForm>
+
+@code {
+    private UserModel user = new UserModel();
+
+    private void HandleValidSubmit()
+    {
+        // Handle the registration logic here
+    }
+
+    public class UserModel
+    {
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public bool RememberMe { get; set; }
+    }
+}
