@@ -1,6 +1,5 @@
 # Customer Portal - Learning Repository
-Customer Portal for Farsound Aviation Limited (FAL) than runs server-side inside an ASP.NET Core web app and handles user interactions with the customer portal over a SignalR connection for web apps with a rich dynamic user interface(UI) built with Blazor Server to replace the current Customer Portal.
-
+Customer Portal for Farsound Aviation Limited (FAL) than runs server-side inside an ASP.NET Core web app and handles user interactions with the customer portal over a SignalR connection for web apps with a rich dynamic user interface(UI) built with Blazor Server.
 ![image](https://github.com/user-attachments/assets/ff3dd4a2-b722-4f7e-94c5-401d4b9c5d25)
 
 ![image](https://github.com/user-attachments/assets/c56a43b1-3403-431c-93e7-a1bd8dac9440)
