@@ -5,9 +5,21 @@
     <h2>Log In</h2>
 </div>
 
+
 <EditForm Model="@user" OnValidSubmit="HandleValidSubmit">
     <DataAnnotationsValidator />
     <ValidationSummary />
+    <style>
+        .footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            background-color: #f1f1f1;
+            color: #FF4D00;
+        }
+    </style>
     <div style="text-align: center;">
     <div>
         <label for="username">Username</label>
@@ -31,6 +43,9 @@
     <br />
     <a href="accounts/forgotpassword">Forgotten your password?</a>
     </div>
+    <footer class="footer">
+        Copyright © Farsound Aviation 2024
+    </footer>
 </EditForm>
 
 @code {
