@@ -1,8 +1,13 @@
 ﻿@page "/accounts/login"
 
+<PageTitle>FARSOUND | Login</PageTitle>
 <div style="text-align: center;">
-    <h3>User Area</h3>
-    <h2>Log In</h2>
+    <br />
+    <br />
+    <h2>User Area</h2>
+    <br />
+    <br />
+    <h4>Log In</h4>
 </div>
 
 
@@ -18,6 +23,10 @@
             padding: 10px;
             background-color: #f1f1f1;
             color: #FF4D00;
+        }
+
+        .button {
+            border-radius: 8px;
         }
     </style>
     <div style="text-align: center;">
@@ -36,16 +45,16 @@
         <label for="rememberMe">Remember Me</label>
     </div>
     <br />
-    <button type="submit" style="background-color: #FF4D00;">Log In</button>
+    <button class="button" type="submit" style="background-color: #FF4D00;">Log In</button>
     <br />
     <br />
     <a href="accounts/register">Don't have an account? Register here.</a>
     <br />
     <a href="accounts/forgotpassword">Forgotten your password?</a>
     </div>
-    <footer class="footer">
-        Copyright © Farsound Aviation 2024
-    </footer>
+    @* <footer class="footer"> *@
+    @*     Copyright © Farsound Aviation 2024 *@
+    @* </footer> *@
 </EditForm>
 
 @code {
