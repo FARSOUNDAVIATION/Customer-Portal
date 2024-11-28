@@ -1,0 +1,23 @@
+﻿@using Microsoft.AspNetCore.Authentication
+
+@page "/SignOut"
+<h3>SignOut</h3>
+
+<p>Congratulations, You are logged into FARSOUND Customer Portal</p>
+<button @onclick="SignOutUser">Logout</button>
+
+@code {
+    private async Task SignOutUser()
+    {
+        // Perform sign out logic here, e.g., clearing authentication tokens, etc.
+        // await AuthenticationService.LogoutAsync();
+
+        NavigationManager.NavigateTo("/Home"); // redirect to the home page after sign out
+    }
+
+    [Inject]
+    private NavigationManager NavigationManager { get; set; }
+
+    [Inject]
+    private IAuthenticationService AuthenticationService { get; set; }
+}
