@@ -1,4 +1,8 @@
-﻿@page "/accounts/register"
+﻿@page "/userarea/accounts/register"
+@page "/userarea/accounts/register/{FormName}"
+@using Microsoft.AspNetCore.Components.Routing
+@inject NavigationManager Navigation
+
 <PageTitle>FARSOUND | Register</PageTitle>
 <div style="text-align: center;">
     <br />
@@ -64,9 +68,9 @@
     <button class="button" type="submit" style="background-color: #FF4D00;">Create User</button>
     <br />
     <br />
-    <a href="accounts/login">Already have an account? Login here.</a>
+    <a href="/userarea/accounts/login">Already have an account? Login here.</a>
     <br />
-        <a href="accounts/forgotpassword">Forgotten your password?</a>
+        <a href="/userarea/accounts/forgotpassword">Forgotten your password?</a>
     </div>
 
     @* <footer class="footer"> *@
@@ -75,6 +79,9 @@
 </EditForm>
 
 @code {
+    [Parameter]
+    public string FormName { get; set; }
+
     private UserModel user = new UserModel();
 
     private void HandleValidSubmit()
