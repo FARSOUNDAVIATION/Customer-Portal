@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FARSOUND.Domain\FARSOUND.Domain.csproj" />
+    <ProjectReference Include="..\FARSOUND.Application\FARSOUND.Application.csproj" />
   </ItemGroup>
 
 </Project>
