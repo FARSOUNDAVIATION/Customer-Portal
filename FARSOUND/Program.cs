@@ -1,3 +1,4 @@
+using FARSOUND.Application.Context;
 using FARSOUND.Components;
 using FARSOUND.Infrastructure;
 using Microsoft.EntityFrameworkCore;
@@ -9,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorComponents();
 
-builder.Services.AddDbContext<FARSOUNDDbContext>(options =>
+builder.Services.AddDbContext<IFARSOUNDDbContext,FARSOUNDDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("FARSOUNDDbContext"));
 });
