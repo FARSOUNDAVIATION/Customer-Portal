@@ -5,6 +5,10 @@ VisualStudioVersion = 17.13.35507.96
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FARSOUND", "FARSOUND\FARSOUND.csproj", "{FDEB967E-7706-4A47-97DE-7ED9C2E79B45}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FARSOUND.Infrastructure", "FARSOUND.Infrastructure\FARSOUND.Infrastructure.csproj", "{90D18DDB-4EA1-4004-9A01-06D6B76C2F7F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FARSOUND.Domain", "FARSOUND.Domain\FARSOUND.Domain.csproj", "{DE3E38A5-DE40-4D13-B679-E0E38CCF6CE4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{FDEB967E-7706-4A47-97DE-7ED9C2E79B45}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FDEB967E-7706-4A47-97DE-7ED9C2E79B45}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FDEB967E-7706-4A47-97DE-7ED9C2E79B45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90D18DDB-4EA1-4004-9A01-06D6B76C2F7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90D18DDB-4EA1-4004-9A01-06D6B76C2F7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90D18DDB-4EA1-4004-9A01-06D6B76C2F7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90D18DDB-4EA1-4004-9A01-06D6B76C2F7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE3E38A5-DE40-4D13-B679-E0E38CCF6CE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE3E38A5-DE40-4D13-B679-E0E38CCF6CE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE3E38A5-DE40-4D13-B679-E0E38CCF6CE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE3E38A5-DE40-4D13-B679-E0E38CCF6CE4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

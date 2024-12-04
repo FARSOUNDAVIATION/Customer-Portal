@@ -1,11 +1,31 @@
 using FARSOUND.Components;
+using FARSOUND.Infrastructure;
+using Microsoft.EntityFrameworkCore;
+//using FARSOUND.Context;
+//using FARSOUND.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents();
 
+builder.Services.AddDbContext<FARSOUNDDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("FARSOUNDDbContext"));
+});
+
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider
+        .GetRequiredService<FARSOUNDDbContext>();
+
+    if (!dbContext.Database.CanConnect())
+    {
+        throw new NotImplementedException("Can't connect to DB");
+    }
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
