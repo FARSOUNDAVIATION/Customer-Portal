@@ -12,7 +12,6 @@ Customer Portal for Farsound Aviation Limited (FAL) than runs server-side inside
 
 ![image](https://github.com/user-attachments/assets/abd087e0-c447-4248-b25f-8bf3b64e6469)
 
-
 - Google Chrome Browser
 ![image](https://github.com/user-attachments/assets/b55200e3-f62b-46d2-afe3-f5d616ba3e2b)
 
@@ -36,6 +35,8 @@ Blazor Server
 SignalR
 
 xUnit/MSTest/Nunit (Unit tests) 
+
+HTML,CSS,JS
 
 ## Use Case Diagram for FARSOUND Customer Portal
 
