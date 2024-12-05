@@ -1,4 +1,5 @@
 using FARSOUND.Application.Context;
+using FARSOUND.Application.Services;
 using FARSOUND.Components;
 using FARSOUND.Infrastructure;
 using Microsoft.EntityFrameworkCore;
@@ -10,10 +11,13 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorComponents();
 
+builder.Services.AddScoped<IUserService, UserService>();
+
 builder.Services.AddDbContext<IFARSOUNDDbContext,FARSOUNDDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("FARSOUNDDbContext"));
 });
+
 
 var app = builder.Build();
 
@@ -35,6 +39,7 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
 
 app.UseHttpsRedirection();
 

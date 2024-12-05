@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FARSOUND.Infrastructure", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FARSOUND.Domain", "FARSOUND.Domain\FARSOUND.Domain.csproj", "{DE3E38A5-DE40-4D13-B679-E0E38CCF6CE4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FARSOUND.Application", "FARSOUND.Application\FARSOUND.Application.csproj", "{1CCAAF42-3936-48AA-9174-4F9823CD7115}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{DE3E38A5-DE40-4D13-B679-E0E38CCF6CE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE3E38A5-DE40-4D13-B679-E0E38CCF6CE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE3E38A5-DE40-4D13-B679-E0E38CCF6CE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CCAAF42-3936-48AA-9174-4F9823CD7115}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CCAAF42-3936-48AA-9174-4F9823CD7115}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CCAAF42-3936-48AA-9174-4F9823CD7115}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CCAAF42-3936-48AA-9174-4F9823CD7115}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
