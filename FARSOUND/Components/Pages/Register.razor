@@ -1,0 +1,126 @@
+﻿﻿
+@page "/register"
+@using FARSOUND.Components.Pages.UserArea.Accounts
+@using System.ComponentModel.DataAnnotations
+
+<PageTitle>FARSOUND | Register</PageTitle>
+<style>
+    .button {
+        border-radius: 8px;
+    }
+</style>
+<div class="row" style="text-align: center;>
+    <div class="col-md-4">
+   <section>
+    <br />
+    <br />
+    <h2 style="text-align:center; font-weight: bold;">User Area</h2>
+    <br />
+    <br />
+    <h4>Sign Up</h4>
+            <hr>
+            <EditForm Model="Input" method="post" OnValidSubmit="RegisterUser" FormName="Register">
+                <DataAnnotationsValidator />
+                <h5>Name</h5>
+
+                @* <div> *@
+                @*     <label for="email">E-mail*</label> *@
+                @*     <InputText id="email" @bind-Value="Input.Email" /> *@
+                @* </div> *@
+
+                <br />
+                <div class="form-floating mb-3">
+                    <InputText @bind-Value="Input.Username" class="form-control" aria-required="true" />
+                    <label for="username" >Username*</label>
+                    <ValidationMessage For="() => Input.Username" class="text-danger" />
+                </div>
+                <div class="form-floating mb-3">
+                    <InputText @bind-Value="Input.Email" class="form-control" aria-required="true" />
+                    <label for="email" class="form-label">Email*</label>
+                    <ValidationMessage For="() => Input.Email" class="text-danger" />
+                </div>
+                <h5>Account Security</h5>
+                <br />
+                <div class="form-floating mb-3">
+                    <InputText type="password" @bind-Value="Input.Password" class="form-control" aria-required="true" />
+                    <label for="password" class="form-label">Password*</label>
+                    <ValidationMessage For="() => Input.Password" class="text-danger" />
+                </div>
+                <div class="form-floating mb-3">
+                    <InputText @bind-Value="Input.RepeatPassword" class="form-control" aria-required="true" />
+                    <label for="repeatPassword" class="form-label">Repeat Password*</label>
+                    <ValidationMessage For="() => Input.Email" class="text-danger" />
+                </div>
+                <div class="form-floating mb-3">
+                    <InputText @bind-Value="Input.SecurityQuestion" class="form-control" aria-required="true" />
+                    <label for="SecurityQuestion" class="form-label">Security Question*</label>
+                    <ValidationMessage For="() => Input.SecurityQuestion" class="text-danger" />
+                </div>
+                <div class="form-floating mb-3">
+                    <InputText @bind-Value="Input.SecurityAnswer" class="form-control" aria-required="true" />
+                    <label for="SecurityAnswer" class="form-label">Security Answer*</label>
+                    <ValidationMessage For="() => Input.SecurityAnswer" class="text-danger" />
+                </div>
+
+                <div class="form-floating mb-3">
+                    <InputSelect class="form-select" @bind-Value="Input.Role" aria-required="true">
+                        <option value="Admin">Admin</option>
+                        <option value="DefaultUser">Default User</option>
+                    </InputSelect>
+                    <label for="role" class="form-label">Role</label>
+                    <ValidationMessage For="() => Input.Role" class="text-danger" />
+                </div>
+                <div>
+                    <button class="button" type="submit" style="background-color: #FF4D00;">Create User</button>
+                    <br />
+                    <br />
+                    <a href="/userarea/accounts/login">Already have an account? Login here.</a>
+                    <br />
+                    <a href="/userarea/accounts/forgotpassword">Forgotten your password?</a>
+                </div>
+                <hr/>
+            </EditForm>
+        </section>
+ </div>
+
+
+@code {
+    [SupplyParameterFromForm]
+    private InputModel Input { get; set; } = new();
+
+    public void RegisterUser()
+    {
+        
+    }
+
+    private sealed class InputModel
+    {
+        [Required]
+        [DataType(DataType.Text)]
+        public string Username { get; set; } = "";
+
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; } = "";
+
+        [Required]
+        [DataType(DataType.Password)]
+        public string Password { get; set; } = "";
+
+        [Required]
+        [DataType(DataType.Password)]
+        public string RepeatPassword { get; set; } = "";
+
+        [Required]
+        [DataType(DataType.Text)]
+        public string SecurityQuestion { get; set; } = "";
+
+        [Required]
+        [DataType(DataType.Text)]
+        public string SecurityAnswer { get; set; } = "";
+
+        [Required]
+        [DataType(DataType.Text)]
+        public string Role { get; set; } = "";
+    }
+}
