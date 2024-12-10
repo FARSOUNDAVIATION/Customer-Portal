@@ -1,7 +1,10 @@
 ﻿﻿
 @page "/register"
-@using FARSOUND.Components.Pages.UserArea.Accounts
+
+@rendermode InteractiveServer
 @using System.ComponentModel.DataAnnotations
+@using FARSOUND.Data
+@using FARSOUND.Components.Shared
 
 <PageTitle>FARSOUND | Register</PageTitle>
 <style>
@@ -18,7 +21,9 @@
     <br />
     <br />
     <h4>Sign Up</h4>
+            <Alert @ref="alert" />
             <hr>
+            <hr style="margin: auto; width: 50%;">
             <EditForm Model="Input" method="post" OnValidSubmit="RegisterUser" FormName="Register">
                 <DataAnnotationsValidator />
                 <h5>Name</h5>
@@ -49,7 +54,7 @@
                 <div class="form-floating mb-3">
                     <InputText @bind-Value="Input.RepeatPassword" class="form-control" aria-required="true" />
                     <label for="repeatPassword" class="form-label">Repeat Password*</label>
-                    <ValidationMessage For="() => Input.Email" class="text-danger" />
+                    <ValidationMessage For="() => Input.RepeatPassword" class="text-danger" />
                 </div>
                 <div class="form-floating mb-3">
                     <InputText @bind-Value="Input.SecurityQuestion" class="form-control" aria-required="true" />
@@ -74,7 +79,7 @@
                     <button class="button" type="submit" style="background-color: #FF4D00;">Create User</button>
                     <br />
                     <br />
-                    <a href="/userarea/accounts/login">Already have an account? Login here.</a>
+                    <a href="login">Already have an account? Login here.</a>
                     <br />
                     <a href="/userarea/accounts/forgotpassword">Forgotten your password?</a>
                 </div>
@@ -85,12 +90,36 @@
 
 
 @code {
+      private Alert alert;
+
     [SupplyParameterFromForm]
+
     private InputModel Input { get; set; } = new();
 
     public void RegisterUser()
     {
-        
+        bool result = AppDBContext.SaveUser(
+
+        new User
+            {
+                Username = Input.Username,
+                Email = Input.Email,
+                Password = Input.Password,
+                RepeatPassword = Input.RepeatPassword,
+                SecurityQuestion = Input.SecurityQuestion,
+                SecurityAnswer = Input.SecurityAnswer,
+                Role = Input.Role
+            }
+        );
+
+        if (result)
+        {
+            alert.ShowSuccess("Registration Successful");
+        }
+        else
+        {
+            alert.ShowFailed("Registration Failed!");
+        }
     }
 
     private sealed class InputModel

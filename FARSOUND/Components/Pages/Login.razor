@@ -1,0 +1,89 @@
+﻿@page "/login"
+@using System.ComponentModel.DataAnnotations
+@using FARSOUND.Components.Shared
+@using FARSOUND.Data
+
+<PageTitle>FARSOUND | Login</PageTitle>
+<style>
+    .button {
+        border-radius: 8px;
+    }
+</style>
+<div class="row" style="text-align: center;>
+    <div class="col-md-4">
+    <br />
+    <br />
+    <h2 style="text-align:center; font-weight: bold;">User Area</h2>
+    <br />
+    <br />
+    <h4>Sign Up</h4>
+    <div class="col-md-4">
+        <section>
+            <EditForm Model="Input" method="post" OnValidSubmit="OnLogin" FormName="Login">
+                <DataAnnotationsValidator />
+                <hr />
+                <div class="form-floating mb-3">
+                    <InputText @bind-Value="Input.Username" class="form-control" aria-required="true" />
+                    <label for="username" class="form-label">Username</label>
+                    <ValidationMessage For="() => Input.Username" class="text-danger" />
+                </div>
+                <div class="form-floating mb-3">
+                    <InputText type="password" @bind-Value="Input.Password" class="form-control" aria-required="true" />
+                    <label for="password" class="form-label">Password</label>
+                    <ValidationMessage For="() => Input.Password" class="text-danger" />
+                </div>
+                <div>
+                    <br />
+                    <button class="button" type="submit" style="background-color: #FF4D00;">Log In</button>
+                    <br />
+                    <br />
+                    <a href="register">Don't have an account? Register here.</a>
+                    <br />
+                    <a href="userarea/accounts/forgotpassword">Forgotten your password?</a>
+                </div>
+            </EditForm>
+        </section>
+    </div>
+    </div>
+
+
+@code {
+    [SupplyParameterFromForm]
+    private InputModel Input { get; set; } = new();
+
+    public async Task OnLogin()
+    {
+
+    }
+
+    private sealed class InputModel
+    {
+        [Required]
+        [DataType(DataType.Text)]
+        public string Username { get; set; } = "";
+
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; } = "";
+
+        [Required]
+        [DataType(DataType.Password)]
+        public string Password { get; set; } = "";
+
+        [Required]
+        [DataType(DataType.Password)]
+        public string RepeatPassword { get; set; } = "";
+
+        [Required]
+        [DataType(DataType.Text)]
+        public string SecurityQuestion { get; set; } = "";
+
+        [Required]
+        [DataType(DataType.Text)]
+        public string SecurityAnswer { get; set; } = "";
+
+        [Required]
+        [DataType(DataType.Text)]
+        public string Role { get; set; } = "";
+    }
+}
