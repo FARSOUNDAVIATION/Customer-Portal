@@ -1,10 +1,10 @@
 ﻿﻿
 @page "/register"
-
 @rendermode InteractiveServer
 @using System.ComponentModel.DataAnnotations
-@using FARSOUND.Data
 @using FARSOUND.Components.Shared
+@using FARSOUND.Data
+
 
 <PageTitle>FARSOUND | Register</PageTitle>
 <style>
@@ -28,11 +28,6 @@
                 <DataAnnotationsValidator />
                 <h5>Name</h5>
 
-                @* <div> *@
-                @*     <label for="email">E-mail*</label> *@
-                @*     <InputText id="email" @bind-Value="Input.Email" /> *@
-                @* </div> *@
-
                 <br />
                 <div class="form-floating mb-3">
                     <InputText @bind-Value="Input.Username" class="form-control" aria-required="true" />
@@ -52,9 +47,9 @@
                     <ValidationMessage For="() => Input.Password" class="text-danger" />
                 </div>
                 <div class="form-floating mb-3">
-                    <InputText @bind-Value="Input.RepeatPassword" class="form-control" aria-required="true" />
+                    <InputText @bind-Value="Input.Password" class="form-control" aria-required="true" />
                     <label for="repeatPassword" class="form-label">Repeat Password*</label>
-                    <ValidationMessage For="() => Input.RepeatPassword" class="text-danger" />
+                    <ValidationMessage For="() => Input.Password" class="text-danger" />
                 </div>
                 <div class="form-floating mb-3">
                     <InputText @bind-Value="Input.SecurityQuestion" class="form-control" aria-required="true" />
