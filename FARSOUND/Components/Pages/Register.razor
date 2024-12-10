@@ -21,8 +21,8 @@
     <br />
     <br />
     <h4>Sign Up</h4>
+            <br />
             <Alert @ref="alert" />
-            <hr>
             <hr style="margin: auto; width: 50%;">
             <EditForm Model="Input" method="post" OnValidSubmit="RegisterUser" FormName="Register">
                 <DataAnnotationsValidator />
@@ -47,9 +47,9 @@
                     <ValidationMessage For="() => Input.Password" class="text-danger" />
                 </div>
                 <div class="form-floating mb-3">
-                    <InputText @bind-Value="Input.Password" class="form-control" aria-required="true" />
-                    <label for="repeatPassword" class="form-label">Repeat Password*</label>
-                    <ValidationMessage For="() => Input.Password" class="text-danger" />
+                    <InputText type="password" @bind-Value ="Input.Password" class="form-control" aria-required="true" />
+                    <label for="RepeatPassword" class="form-label">Repeat Password*</label>
+                    <ValidationMessage For="() => Input.RepeatPassword" class="text-danger" />
                 </div>
                 <div class="form-floating mb-3">
                     <InputText @bind-Value="Input.SecurityQuestion" class="form-control" aria-required="true" />

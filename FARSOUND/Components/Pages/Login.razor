@@ -21,7 +21,6 @@
                 <hr style="margin: auto; width: 50%;">
             <EditForm Model="Input" method="post" OnValidSubmit="OnLogin" FormName="Login">
                 <DataAnnotationsValidator />
-                <h5>Name</h5>
                 <br />
                 <div class="form-floating mb-3">
                     <InputText @bind-Value="Input.Username" class="form-control" aria-required="true" />
