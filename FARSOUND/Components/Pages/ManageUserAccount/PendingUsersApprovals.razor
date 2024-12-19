@@ -1,4 +1,12 @@
-﻿<h3>PendingUsersApprovals</h3>
+﻿@page "/manageuseraccount/pendingusersapprovals"
+
+@using Microsoft.AspNetCore.Authorization
+
+<PageTitle>FARSOUND | Pending Users Approval</PageTitle>
+<h3>PendingUsersApprovals</h3>
+
+
+@attribute [Authorize(Roles = "Admin")]
 
 @code {
 

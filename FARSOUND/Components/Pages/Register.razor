@@ -1,9 +1,12 @@
 ﻿﻿
 @page "/register"
-@rendermode InteractiveServer
+
 @using System.ComponentModel.DataAnnotations
 @using FARSOUND.Components.Shared
 @using FARSOUND.Data
+@using static FARSOUND.Data.AppDBContext
+
+@rendermode InteractiveServer
 
 
 <PageTitle>FARSOUND | Register</PageTitle>
@@ -46,21 +49,21 @@
                     <label for="password" class="form-label">Password*</label>
                     <ValidationMessage For="() => Input.Password" class="text-danger" />
                 </div>
-                <div class="form-floating mb-3">
-                    <InputText type="password" @bind-Value ="Input.Password" class="form-control" aria-required="true" />
-                    <label for="RepeatPassword" class="form-label">Repeat Password*</label>
-                    <ValidationMessage For="() => Input.RepeatPassword" class="text-danger" />
-                </div>
-                <div class="form-floating mb-3">
-                    <InputText @bind-Value="Input.SecurityQuestion" class="form-control" aria-required="true" />
-                    <label for="SecurityQuestion" class="form-label">Security Question*</label>
-                    <ValidationMessage For="() => Input.SecurityQuestion" class="text-danger" />
-                </div>
-                <div class="form-floating mb-3">
-                    <InputText @bind-Value="Input.SecurityAnswer" class="form-control" aria-required="true" />
-                    <label for="SecurityAnswer" class="form-label">Security Answer*</label>
-                    <ValidationMessage For="() => Input.SecurityAnswer" class="text-danger" />
-                </div>
+                @* <div class="form-floating mb-3"> *@
+                @*     <InputText type="password" @bind-Value ="Input.Password" class="form-control" aria-required="true" /> *@
+                @*     <label for="RepeatPassword" class="form-label">Repeat Password*</label> *@
+                @*     <ValidationMessage For="() => Input.RepeatPassword" class="text-danger" /> *@
+                @* </div> *@
+                @* <div class="form-floating mb-3"> *@
+                @*     <InputText @bind-Value="Input.SecurityQuestion" class="form-control" aria-required="true" /> *@
+                @*     <label for="SecurityQuestion" class="form-label">Security Question*</label> *@
+                @*     <ValidationMessage For="() => Input.SecurityQuestion" class="text-danger" /> *@
+                @* </div> *@
+                @* <div class="form-floating mb-3"> *@
+                @*     <InputText @bind-Value="Input.SecurityAnswer" class="form-control" aria-required="true" /> *@
+                @*     <label for="SecurityAnswer" class="form-label">Security Answer*</label> *@
+                @*     <ValidationMessage For="() => Input.SecurityAnswer" class="text-danger" /> *@
+                @* </div> *@
 
                 <div class="form-floating mb-3">
                     <InputSelect class="form-select" @bind-Value="Input.Role" aria-required="true">
@@ -71,7 +74,8 @@
                     <ValidationMessage For="() => Input.Role" class="text-danger" />
                 </div>
                 <div>
-                    <button class="button" type="submit" style="background-color: #FF4D00;">Create User</button>
+                    @* <button class="button" type="submit" style="background-color: #FF4D00;">Create User</button> *@
+                    <button class="button" type="submit" style="background-color: #FF4D00;" @onclick="RegisterUser">Create User</button>
                     <br />
                     <br />
                     <a href="login">Already have an account? Login here.</a>
@@ -100,9 +104,9 @@
                 Username = Input.Username,
                 Email = Input.Email,
                 Password = Input.Password,
-                RepeatPassword = Input.RepeatPassword,
-                SecurityQuestion = Input.SecurityQuestion,
-                SecurityAnswer = Input.SecurityAnswer,
+                // RepeatPassword = Input.RepeatPassword,
+                // SecurityQuestion = Input.SecurityQuestion,
+                // SecurityAnswer = Input.SecurityAnswer,
                 Role = Input.Role
             }
         );
@@ -131,17 +135,17 @@
         [DataType(DataType.Password)]
         public string Password { get; set; } = "";
 
-        [Required]
-        [DataType(DataType.Password)]
-        public string RepeatPassword { get; set; } = "";
+        // [Required]
+        // [DataType(DataType.Password)]
+        // public string RepeatPassword { get; set; } = "";
 
-        [Required]
-        [DataType(DataType.Text)]
-        public string SecurityQuestion { get; set; } = "";
+        // [Required]
+        // [DataType(DataType.Text)]
+        // public string SecurityQuestion { get; set; } = "";
 
-        [Required]
-        [DataType(DataType.Text)]
-        public string SecurityAnswer { get; set; } = "";
+        // [Required]
+        // [DataType(DataType.Text)]
+        // public string SecurityAnswer { get; set; } = "";
 
         [Required]
         [DataType(DataType.Text)]

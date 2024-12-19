@@ -1,10 +1,22 @@
 ﻿@using Microsoft.AspNetCore.Authentication
 
 @page "/userarea/accounts/signout"
-<h3>SignOut</h3>
 
-<p>Congratulations, You are logged into FARSOUND Customer Portal</p>
-<button @onclick="SignOutUser">Logout</button>
+<PageTitle>FARSOUND | Signed out</PageTitle>
+<h3 style="text-align: center;">Signed Out</h3>
+
+<div class="background">
+    <br />
+    <br />
+    <h1 style="text-align: center; font-weight: bold;">Customer Portal</h1>
+    <br />
+    <br />
+    <br />
+    <br />
+    <p style="text-align: center;">You have successfully logged out of the FARSOUND Customer Portal. Check out our <a href="https://www.farsound.com/">website</a>.</p>
+</div>
+
+<button @onclick="SignOutUser" style="display: block; margin: 0 auto;">Logout</button>
 
 @code {
     private async Task SignOutUser()

@@ -13,19 +13,27 @@
             }
             return false;
         }
-        public static User? Verify(string username, string password)
+        //    public static User? Verify(string username, string email, string password)
+        //    {
+        //        return _users.FirstOrDefault(x => x.Username.Equals(username, StringComparison.InvariantCultureIgnoreCase) && x.Email.Equals(email, StringComparison.InvariantCultureIgnoreCase) && x.Password == password);
+        //    }
+        //}
+
+        public static User? Verify(string email, string password)
         {
-            return _users.FirstOrDefault(x => x.Username.Equals(username, StringComparison.InvariantCultureIgnoreCase) && x.Password == password);
+            return _users.FirstOrDefault(x => x.Email.Equals(email, StringComparison.InvariantCultureIgnoreCase) && x.Password == password);
         }
-    }
-    public class User
-    {
-        public string Username { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public string RepeatPassword { get; set; }
-        public string SecurityQuestion { get; set; }
-        public string SecurityAnswer { get; set; }
-        public string Role { get; set; }
+
+        public class User
+        {
+            public string Username { get; set; }
+            public string Email { get; set; }
+            public string Password { get; set; }
+
+            //public string RepeatPassword { get; set; }
+            //public string SecurityQuestion { get; set; }
+            //public string SecurityAnswer { get; set; }
+            public string Role { get; set; }
+        }
     }
 }

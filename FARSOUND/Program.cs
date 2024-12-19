@@ -1,4 +1,5 @@
 using FARSOUND.Components;
+using FARSOUND.Components.Middleware;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,7 +12,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     .AddCookie(options =>
     {
         options.LoginPath = "/login";
-        options.AccessDeniedPath = "/accessdenied";
+        options.AccessDeniedPath = "/userarea/accounts/accessdenied";
     });
 
 
@@ -31,7 +32,7 @@ app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
-//app.UseMiddleware<AuthMiddleware>();
+app.UseMiddleware<AuthMiddleware>();
 
 app.UseStaticFiles();
 app.UseAntiforgery();
@@ -40,3 +41,4 @@ app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
 
 app.Run();
+

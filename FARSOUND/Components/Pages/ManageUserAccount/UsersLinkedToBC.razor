@@ -1,4 +1,12 @@
-﻿<h3>UsersLinkedToBC</h3>
+﻿@page "/manageuseraccount/userslinkedtobc"
+@using Microsoft.AspNetCore.Authorization
+
+<PageTitle>FARSOUND | Users Linked to BC</PageTitle>
+
+<h3>UsersLinkedToBC</h3>
+
+
+@attribute [Authorize(Roles = "Admin")]
 
 @code {
 

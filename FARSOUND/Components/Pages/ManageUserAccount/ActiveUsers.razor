@@ -1,4 +1,12 @@
-﻿<h3>ActiveUsers</h3>
+﻿@page "/manageuseraccount/activeusers"
+
+@using Microsoft.AspNetCore.Authorization
+
+<PageTitle>FARSOUND | Active Users</PageTitle>
+
+<h3>ActiveUsers</h3>
+
+@attribute [Authorize (Roles = "Admin")]
 
 @code {
 

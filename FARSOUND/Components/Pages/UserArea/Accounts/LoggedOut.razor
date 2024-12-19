@@ -1,5 +1,11 @@
 ﻿@page "/userarea/accounts/loggedout"
 
+@using Microsoft.AspNetCore.Authentication
+@using Microsoft.AspNetCore.Authentication.Cookies
+@using Microsoft.AspNetCore.Http
+
+@inject NavigationManager nav
+
 <PageTitle>FARSOUND</PageTitle>
 <style>
     .footer {
@@ -57,3 +63,14 @@
 @* <footer class="footer"> *@
 @*     Copyright © Farsound Aviation 2024 *@
 @* </footer> *@
+
+
+@code {
+    [CascadingParameter]
+    public HttpContext? httpContext { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        await httpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+        nav.NavigateTo("/userarea/accounts/loggedout");
+    }
+}
