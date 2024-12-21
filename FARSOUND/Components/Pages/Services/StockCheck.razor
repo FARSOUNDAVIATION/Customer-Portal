@@ -1,12 +1,12 @@
-﻿@page "/servcies/stockcheck"
+﻿@page "/services/stockcheck"
 @using Microsoft.AspNetCore.Authorization
 
 <PageTitle>FARSOUND | Stock Check</PageTitle>
 
-<h3>StockCheck</h3>
+<h3 style="text-align: center; font-weight: bold;">Stock Check</h3>
 
 
-@attribute [Authorize(Roles = "DefaultUser")]
+@attribute [Authorize(Roles = "DefaultUser, Admin")]
 
 @code {
 

@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Collections.Concurrent;
 using System.Security.Claims;
 
@@ -24,6 +24,7 @@ namespace FARSOUND.Components.Middleware
         {
             // Check if the request path is "/login" and contains a "key" query parameter
             if (context.Request.Path == "/login" && context.Request.Query.ContainsKey("key"))
+            //if (context.Request.Path == "/login" && context.Request.Query.ContainsKey("key"))
             {
                 var key = Guid.Parse(context.Request.Query["key"]); // Parse the key from the query parameter
                 var claim = Logins[key]; // Retrieve the ClaimsPrincipal associated with the key

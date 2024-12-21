@@ -6,6 +6,8 @@
 @using FARSOUND.Data
 @using static FARSOUND.Data.AppDBContext
 
+@inject NavigationManager nav
+
 @rendermode InteractiveServer
 
 
@@ -49,21 +51,21 @@
                     <label for="password" class="form-label">Password*</label>
                     <ValidationMessage For="() => Input.Password" class="text-danger" />
                 </div>
-                @* <div class="form-floating mb-3"> *@
-                @*     <InputText type="password" @bind-Value ="Input.Password" class="form-control" aria-required="true" /> *@
-                @*     <label for="RepeatPassword" class="form-label">Repeat Password*</label> *@
-                @*     <ValidationMessage For="() => Input.RepeatPassword" class="text-danger" /> *@
-                @* </div> *@
-                @* <div class="form-floating mb-3"> *@
-                @*     <InputText @bind-Value="Input.SecurityQuestion" class="form-control" aria-required="true" /> *@
-                @*     <label for="SecurityQuestion" class="form-label">Security Question*</label> *@
-                @*     <ValidationMessage For="() => Input.SecurityQuestion" class="text-danger" /> *@
-                @* </div> *@
-                @* <div class="form-floating mb-3"> *@
-                @*     <InputText @bind-Value="Input.SecurityAnswer" class="form-control" aria-required="true" /> *@
-                @*     <label for="SecurityAnswer" class="form-label">Security Answer*</label> *@
-                @*     <ValidationMessage For="() => Input.SecurityAnswer" class="text-danger" /> *@
-                @* </div> *@
+                <div class="form-floating mb-3">
+            <InputText type="password" @bind-Value ="Input.Password" class="form-control" aria-required="true" /> 
+     <label for="RepeatPassword" class="form-label">Repeat Password*</label> 
+                  <ValidationMessage For="() => Input.RepeatPassword" class="text-danger" /> 
+                 </div> 
+                 <div class="form-floating mb-3"> 
+                     <InputText @bind-Value="Input.SecurityQuestion" class="form-control" aria-required="true" /> 
+                     <label for="SecurityQuestion" class="form-label">Security Question*</label> 
+                    <ValidationMessage For="() => Input.SecurityQuestion" class="text-danger" /> 
+                 </div> 
+                 <div class="form-floating mb-3"> 
+                     <InputText @bind-Value="Input.SecurityAnswer" class="form-control" aria-required="true" />
+                    <label for="SecurityAnswer" class="form-label">Security Answer*</label> 
+                   <ValidationMessage For="() => Input.SecurityAnswer" class="text-danger" /> 
+              </div>
 
                 <div class="form-floating mb-3">
                     <InputSelect class="form-select" @bind-Value="Input.Role" aria-required="true">
@@ -76,6 +78,71 @@
                 <div>
                     @* <button class="button" type="submit" style="background-color: #FF4D00;">Create User</button> *@
                     <button class="button" type="submit" style="background-color: #FF4D00;" @onclick="RegisterUser">Create User</button>
+
+                    @code {
+                        private Alert alert;
+
+                        [SupplyParameterFromForm]
+                        private InputModel Input { get; set; } = new();
+
+                        public async Task RegisterUser()
+                        {
+                            bool result = AppDBContext.SaveUser(
+                                new User
+                                {
+                                    Username = Input.Username,
+                                    Email = Input.Email,
+                                    Password = Input.Password,
+                                    RepeatPassword = Input.RepeatPassword,
+                                    SecurityQuestion = Input.SecurityQuestion,
+                                    SecurityAnswer = Input.SecurityAnswer,
+                                    Role = Input.Role
+                                }
+                            );
+
+                            if (result)
+                            {
+                                alert.ShowSuccess("Registration Successful");
+                        await Task.Delay(30000); // Optional delay to show success message
+                                nav.NavigateTo("/login");
+                            }
+                            else
+                            {
+                                alert.ShowFailed("Registration Failed!");
+                            }
+                        }
+
+                        private sealed class InputModel
+                        {
+                            [Required]
+                            [DataType(DataType.Text)]
+                            public string Username { get; set; } = "";
+
+                            [Required]
+                            [EmailAddress]
+                            public string Email { get; set; } = "";
+
+                            [Required]
+                            [DataType(DataType.Password)]
+                            public string Password { get; set; } = "";
+
+                            [DataType(DataType.Password)]
+                            public string RepeatPassword { get; set; } = "";
+
+                            [Required]
+                            [DataType(DataType.Text)]
+                            public string SecurityQuestion { get; set; } = "";
+
+                            [Required]
+                            [DataType(DataType.Text)]
+                            public string SecurityAnswer { get; set; } = "";
+
+                            [Required]
+                            [DataType(DataType.Text)]
+                            public string Role { get; set; } = "";
+                        }
+                    }
+
                     <br />
                     <br />
                     <a href="login">Already have an account? Login here.</a>
@@ -86,69 +153,3 @@
             </EditForm>
         </section>
  </div>
-
-
-@code {
-      private Alert alert;
-
-    [SupplyParameterFromForm]
-
-    private InputModel Input { get; set; } = new();
-
-    public void RegisterUser()
-    {
-        bool result = AppDBContext.SaveUser(
-
-        new User
-            {
-                Username = Input.Username,
-                Email = Input.Email,
-                Password = Input.Password,
-                // RepeatPassword = Input.RepeatPassword,
-                // SecurityQuestion = Input.SecurityQuestion,
-                // SecurityAnswer = Input.SecurityAnswer,
-                Role = Input.Role
-            }
-        );
-
-        if (result)
-        {
-            alert.ShowSuccess("Registration Successful");
-        }
-        else
-        {
-            alert.ShowFailed("Registration Failed!");
-        }
-    }
-
-    private sealed class InputModel
-    {
-        [Required]
-        [DataType(DataType.Text)]
-        public string Username { get; set; } = "";
-
-        [Required]
-        [EmailAddress]
-        public string Email { get; set; } = "";
-
-        [Required]
-        [DataType(DataType.Password)]
-        public string Password { get; set; } = "";
-
-        // [Required]
-        // [DataType(DataType.Password)]
-        // public string RepeatPassword { get; set; } = "";
-
-        // [Required]
-        // [DataType(DataType.Text)]
-        // public string SecurityQuestion { get; set; } = "";
-
-        // [Required]
-        // [DataType(DataType.Text)]
-        // public string SecurityAnswer { get; set; } = "";
-
-        [Required]
-        [DataType(DataType.Text)]
-        public string Role { get; set; } = "";
-    }
-}

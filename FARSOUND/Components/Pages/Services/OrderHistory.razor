@@ -1,0 +1,13 @@
+﻿@page "/services/orderhistory"
+@using Microsoft.AspNetCore.Authorization
+
+<PageTitle>FARSOUND | Order History</PageTitle>
+
+<h3 style="text-align: center; font-weight: bold;">Order History</h3>
+
+
+@attribute [Authorize(Roles = "DefaultUser, Admin")]
+
+@code {
+
+}

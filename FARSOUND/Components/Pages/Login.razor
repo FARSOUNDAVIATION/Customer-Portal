@@ -22,23 +22,22 @@
     <h2 style="text-align:center; font-weight: bold;">User Area</h2>
     <br />
     <br />
-    <h4>Sign Up</h4>
+    <h4>Log In</h4>
                 <hr style="margin: auto; width: 50%;">
             <EditForm Model="Input" method="post" OnValidSubmit="OnLogin" FormName="Login">
                 <DataAnnotationsValidator />
                 <br />
-                @* <div class="form-floating mb-3"> *@
-                @*     <InputText @bind-Value="Input.Username" class="form-control" aria-required="true" /> *@
-                @*     <label for="username" class="form-label">Username</label> *@
-                @*     <ValidationMessage For="() => Input.Username" class="text-danger" /> *@
-                @* </div> *@
+                 <div class="form-floating mb-3"> 
+                   <InputText @bind-Value="Input.Username" class="form-control" aria-required="true" /> 
+                     <label for="username" class="form-label">Username</label> 
+                    <ValidationMessage For="() => Input.Username" class="text-danger" /> 
+                 </div> 
 
                 <div class="form-floating mb-3">
                     <InputText @bind-Value="Input.Email" class="form-control" aria-required="true" />
                     <label for="email" class="form-label">Email</label>
                     <ValidationMessage For="() => Input.Email" class="text-danger" />
                 </div>
-
 
                 <div class="form-floating mb-3">
                     <InputText type="password" @bind-Value="Input.Password" class="form-control" aria-required="true" />
@@ -47,7 +46,6 @@
                 </div>
                 <div>
                     <br />
-                    @* <button class="button" type="submit" style="background-color: #FF4D00;">Log In</button> *@
                     <button class="button" type="submit" style="background-color: #FF4D00;" @onclick="OnLogin">Log In</button>
                     <br />
                     <br />
@@ -78,24 +76,25 @@
         }
         var claims = new List<Claim>
     {
-    // new Claim(ClaimTypes.Name, user.Username),
-    new Claim(ClaimTypes.Name, user.Email),
+    new Claim(ClaimTypes.Name, user.Username),
+    new Claim(ClaimTypes.Email, user.Email),
     new Claim(ClaimTypes.Role, user.Role),
     };
         var claimIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
         ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimIdentity);
         Guid key = Guid.NewGuid();
         AuthMiddleware.Logins[key] = claimsPrincipal;
+        // nav.NavigateTo("/loginlandingpage", true);
         nav.NavigateTo($"/login?key={key}", true);
 
     }
 
     private sealed class InputModel
     {
-        // [Required]
-        // [EmailAddress]
-        // public string Username { get; set; } = "";
 
+        [Required]
+        [DataType(DataType.Text)]
+        public string Username { get; set; } = "";
 
         [Required]
         [EmailAddress]
